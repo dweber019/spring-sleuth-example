@@ -1,0 +1,10 @@
+spring:
+  application:
+    name: Sleuth Example
+  sleuth:
+    baggage:
+      remote-fields:
+        - x-ot-span-context
+        - x-request-id
+
+logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
