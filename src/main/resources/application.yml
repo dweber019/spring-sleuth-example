@@ -3,8 +3,13 @@ spring:
     name: Sleuth Example
   sleuth:
     baggage:
-      remote-fields:
-        - x-ot-span-context
-        - x-request-id
+      remote-fields: cid
+      correlation-fields: cid
+    propagation:
+      type: w3c
+logging.level.org.springframework.cloud.sleuth: DEBUG
+
+logging.pattern.level: "%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-},CID=%X{cid:-}]"
+
 
 logging.level.org.springframework.web.filter.CommonsRequestLoggingFilter: DEBUG
